@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-            reuseNode true
-        }
+    agent any
+
+    tools {
+        nodejs "NodeJS 18"
     }
+
     stages {
         stage('Clonar') {
             steps {

@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clonar') {
             steps {
-                git 'https://github.com/tu-usuario/devops-demo.git'
+                git 'https://github.com/flowerSof/devops-demo.git'
             }
         }
         stage('Instalar') {

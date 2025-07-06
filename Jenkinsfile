@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:18'
+            reuseNode true
         }
     }
     stages {
@@ -10,21 +11,15 @@ pipeline {
                 git 'https://github.com/flowerSof/devops-demo.git'
             }
         }
-        stage('Instalar') {
+        stage('Instalar dependencias') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Build Docker') {
+        stage('Ejecutar app') {
             steps {
-                sh 'docker build -t devops-demo .'
-            }
-        }
-        stage('Desplegar') {
-            steps {
-                sh 'docker run -d -p 3000:3000 devops-demo'
+                sh 'node index.js &'
             }
         }
     }
 }
-
